@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Gos.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 namespace GOS.Services
 {
     [ServiceContract]
-    public interface IService
+    public interface IGosService
     {
         [OperationContract]
         List<Product> GetProducts();
