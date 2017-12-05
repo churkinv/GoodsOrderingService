@@ -1,14 +1,11 @@
-﻿using GOS.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Gos.Entities;
 using Gos.Data;
 using System.ServiceModel;
 
-namespace GOS.Services
+namespace Gos.Services
 {
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall)] // InstanceContextMode determines the lifetime of service instance,                                                                             
     public class GosService : IGosService, IDisposable                   // Suggestion to use PerCall instead of default PerSession

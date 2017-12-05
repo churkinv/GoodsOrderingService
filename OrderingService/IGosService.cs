@@ -6,7 +6,7 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GOS.Services
+namespace Gos.Services
 {
     [ServiceContract]
     public interface IGosService
