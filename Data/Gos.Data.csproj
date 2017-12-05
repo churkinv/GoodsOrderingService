@@ -48,11 +48,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GosDbContex.cs" />
+    <Compile Include="Migrations\201712052251427_InitialDbCreation.cs" />
+    <Compile Include="Migrations\201712052251427_InitialDbCreation.Designer.cs">
+      <DependentUpon>201712052251427_InitialDbCreation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -60,6 +66,11 @@
       <Project>{48DC3257-888F-4DCD-9B2E-21090870A1A3}</Project>
       <Name>Gos.Entities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201712052251427_InitialDbCreation.resx">
+      <DependentUpon>201712052251427_InitialDbCreation.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 
 namespace Gos.Entities
@@ -7,6 +8,7 @@ namespace Gos.Entities
     public class Customer
     {
         [DataMember]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
 
         [DataMember]
