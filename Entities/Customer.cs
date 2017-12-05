@@ -8,7 +8,7 @@ namespace Gos.Entities
     public class Customer
     {
         [DataMember]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)] // to auto generate PK Guid
         public Guid Id { get; set; }
 
         [DataMember]

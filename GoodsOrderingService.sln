@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gos.SelfHost", "Gos.SelfHos
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gos.IISHost", "Gos.IISHost\Gos.IISHost.csproj", "{4F6B54E3-C0CE-4C8B-9300-2793309AD0B0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gos.Client", "Gos.Client\Gos.Client.csproj", "{01FBF2CF-5202-4F0D-B266-BAB9B76214CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{4F6B54E3-C0CE-4C8B-9300-2793309AD0B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F6B54E3-C0CE-4C8B-9300-2793309AD0B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F6B54E3-C0CE-4C8B-9300-2793309AD0B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01FBF2CF-5202-4F0D-B266-BAB9B76214CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01FBF2CF-5202-4F0D-B266-BAB9B76214CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01FBF2CF-5202-4F0D-B266-BAB9B76214CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01FBF2CF-5202-4F0D-B266-BAB9B76214CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

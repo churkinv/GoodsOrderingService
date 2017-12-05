@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="84bfc8f1-aa66-497c-8249-7b51c7c33e10" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.ObjectModel.ObservableCollection`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:2112" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="2d67197f-a07f-46ac-b330-f1198e26897c" SourceId="1" SourceUrl="http://localhost:2112/?disco" />
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="114b63cb-472f-4edd-800b-c453ef1cdea7" SourceId="1" SourceUrl="http://localhost:2112/?xsd=xsd1" />
+    <MetadataFile FileName="GosService.wsdl" MetadataType="Wsdl" ID="25eaa5a5-c8b1-4d68-95d9-6b10b4a1ba3c" SourceId="1" SourceUrl="http://localhost:2112/?wsdl" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="10df9417-6d56-4d2b-acb8-2eed01095c86" SourceId="1" SourceUrl="http://localhost:2112/?xsd=xsd2" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="91aba32d-ba8a-494c-ade9-05352a53bf7b" SourceId="1" SourceUrl="http://localhost:2112/?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
