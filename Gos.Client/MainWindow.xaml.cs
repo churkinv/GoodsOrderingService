@@ -22,7 +22,7 @@ namespace Gos.Client
     {
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent();           
         }
     }
 }

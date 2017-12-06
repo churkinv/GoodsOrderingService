@@ -139,5 +139,11 @@
       <Name>Gos.Entities</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="008-shopping-cart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="004-shopping-basket.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
