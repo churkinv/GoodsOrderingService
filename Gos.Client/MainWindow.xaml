@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Gos.Client"
         mc:Ignorable="d"
-        Title="Goods Ordering Service" Icon="004-shopping-basket.png" Height="600" Width="800" HorizontalAlignment="Left">
+        Title="Goods Ordering Service" Icon="pack://application:,,,/Assets/004-shopping-basket.png" Height="600" Width="800" HorizontalAlignment="Left">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="125*"/>
@@ -15,7 +15,7 @@
         <ItemsControl Grid.Column="1" HorizontalAlignment="Left" Height="494.3" Margin="10,66.1,0,0" VerticalAlignment="Top" Width="513.233"/>
         <Label Content="Customer:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <ComboBox HorizontalAlignment="Left" Margin="10,35.96,0,0" VerticalAlignment="Top" Width="229.869"/>
-        <Button Content="Submit Order" Grid.Column="1" HorizontalAlignment="Left" Margin="423.303,10,0,0" VerticalAlignment="Top" Width="99.93" Height="47.92"/>
+        <Button Content="Submit Order" Grid.Column="1" HorizontalAlignment="Left" Margin="379.755,10,0,0" VerticalAlignment="Top" Width="143.478" Height="47.92" Style="{DynamicResource Gos.Button}"/>
 
     </Grid>
 </Window>
