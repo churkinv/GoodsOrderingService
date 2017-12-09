@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Gos.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,13 +8,13 @@ using System.Windows.Input;
 
 namespace Gos.Client
 {
-    public class OrderCommand : ICommand
+    public class OrderCommand<T> : ICommand
     {
         public event EventHandler CanExecuteChanged;
-        private readonly Action _execute;
+        private readonly Action<object> _execute;
         private readonly Func<bool> _canExecute;
-
-        public OrderCommand(Action execute)
+       
+        public OrderCommand(Action<object> execute)
         {
             _execute = execute;
         }
@@ -25,7 +26,7 @@ namespace Gos.Client
 
         public void Execute(object parameter)
         {
-            _execute();
+            _execute(parameter);
         }
 
         /// <summary>

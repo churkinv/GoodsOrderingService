@@ -34,7 +34,9 @@
                         HorizontalAlignment="Right" 
                         Margin="10" 
                         Width="75" 
-                        Grid.Column="1"/>
+                        Grid.Column="1"
+                        Command="{Binding RelativeSource={RelativeSource AncestorType=ItemsControl}, Path=DataContext.AddOrderItemCommand}"
+                        CommandParameter="{Binding .}"/>
             </Grid>
         </DataTemplate>
     </Window.Resources>
@@ -53,7 +55,7 @@
                   Height="494" Margin="10,0.6,0,0"
                   VerticalAlignment="Top"
                   Width="230"
-                  ItemsSource="{Binding}"
+                  ItemsSource="{Binding Items}"
                   AutoGenerateColumns="False"
                   ColumnHeaderHeight="0"
                   CanUserAddRows="False" Grid.Row="1">
@@ -89,6 +91,7 @@
                   Margin="10,36,0,0" 
                   VerticalAlignment="Top" 
                   Width="230"
+                  SelectedValue="{Binding CurrentOrder.CustomerId}"
                   ItemsSource="{Binding Customers}" 
                   DisplayMemberPath="FirstName" Height="22"/>
 
