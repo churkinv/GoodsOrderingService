@@ -76,6 +76,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="GosProxy.cs" />
     <Compile Include="MainViewModel.cs" />
     <Compile Include="MainViewModelBase.cs" />
     <Compile Include="MainWindow.xaml.cs">

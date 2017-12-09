@@ -79,6 +79,7 @@ namespace Gos.Client
             // we can find GosServiceClient and async methods by the following: Sol.Expl. Show All Files
             // Open connected services -> under Reference.svcmap-> Reference.cs
             GosServiceClient proxy = new GosServiceClient("NetTcpBinding_IGosService"); // we are passing name of endpoint from App.config to the constructor
+            //GosProxy proxy = new GosProxy("NetTcpBinding_IGosService"); // this one to use handcoded proxy class just for example
             try
             {
                 Products = await proxy.GetProductsAsync();
@@ -99,6 +100,7 @@ namespace Gos.Client
             if (_currentOrder.CustomerId != Guid.Empty && _currentOrder.OrderItems.Count > 0)
             {
                 GosServiceClient proxy = new GosServiceClient("NetTcpBinding_IGosService");
+                //GosProxy proxy = new GosProxy("NetTcpBinding_IGosService"); // this one to use handcoded proxy class just for example
                 try
                 {
                     proxy.SubmitOrder(_currentOrder);
