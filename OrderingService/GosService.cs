@@ -4,7 +4,10 @@ using System.Linq;
 using Gos.Entities;
 using Gos.Data;
 using System.ServiceModel;
-
+using System.Threading;
+using System.Security;
+using System.Security.Permissions;
+using System.Security.Claims;
 
 namespace Gos.Services
 {
@@ -13,8 +16,20 @@ namespace Gos.Services
     {
         readonly GosDbContex _ctx = new GosDbContex();
 
+        #region security option 2
+        //[PrincipalPermission(SecurityAction.Demand, Role = "BUILTIN\\Administrators")]
+        #endregion
         public List<Product> GetProducts()
         {
+            #region security option 1
+            var principal = Thread.CurrentPrincipal; // to check security, two types of autontification NTLM (work group config), Kerberos (domain)
+            //if (!principal.IsInRole("BUILTIN\\Administrators"))
+            //    throw new SecurityException("Access denied");
+            #endregion
+            
+            #region security option 3
+            //ClaimsPrincipal.Current.HasClaim(...); // value can be determined dynamically. From .net 4.5 all principals are claim principals
+            #endregion
             return _ctx.Products.ToList();
         }
 

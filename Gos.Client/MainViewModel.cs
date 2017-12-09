@@ -74,12 +74,17 @@ namespace Gos.Client
 
         private async void LoadProductsAndCustomers()
         {
+          
             // We use "automatic" implementation of service here (right click of project add service ref...) 
             // Actualy we didn`t created Asyncs methods but they where genereted autonatically
             // we can find GosServiceClient and async methods by the following: Sol.Expl. Show All Files
             // Open connected services -> under Reference.svcmap-> Reference.cs
             GosServiceClient proxy = new GosServiceClient("NetTcpBinding_IGosService"); // we are passing name of endpoint from App.config to the constructor
-            //GosProxy proxy = new GosProxy("NetTcpBinding_IGosService"); // this one to use handcoded proxy class just for example
+                                                                                        //GosProxy proxy = new GosProxy("NetTcpBinding_IGosService"); // this one to use handcoded proxy class just for example
+            #region security option 4
+            //proxy.ClientCredentials.Windows.ClientCredential.UserName = "login to windows";
+            //proxy.ClientCredentials.Windows.ClientCredential.Password = "your password";
+            #endregion
             try
             {
                 Products = await proxy.GetProductsAsync();
@@ -120,7 +125,7 @@ namespace Gos.Client
             }
         }
 
-        //
+        // TODO:
         private void OnAddItem (object productO)
         {
             Product product = (Product)productO;
