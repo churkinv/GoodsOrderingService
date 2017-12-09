@@ -5,6 +5,7 @@ using Gos.Entities;
 using Gos.Data;
 using System.ServiceModel;
 
+
 namespace Gos.Services
 {
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall)] // InstanceContextMode determines the lifetime of service instance,                                                                             

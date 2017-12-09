@@ -1,6 +1,9 @@
 ﻿using Gos.Entities;
 using System.Collections.ObjectModel;
 using System;
+using System.ComponentModel;
+using System.Windows;
+using Gos.Client.GosServices;
 
 namespace Gos.Client
 {
@@ -16,19 +19,17 @@ namespace Gos.Client
 
         public MainViewModel()
         {
+            _currentOrder.OrderDate = DateTime.Now;
+            _currentOrder.OrderStatusId = 1;           
             SubmitOrderCommand = new OrderCommand(OnSubmitOrder);
-            AddOrderItemCommand = new OrderCommand(OnAddItem);    
-        }
+            AddOrderItemCommand = new OrderCommand(OnAddItem);
 
-        private void OnAddItem()
-        {
-            throw new NotImplementedException();
-        }
-
-        private void OnSubmitOrder()
-        {
-            throw new NotImplementedException();
-        }
+            // TODO: find out more
+            if (!DesignerProperties.GetIsInDesignMode(new DependencyObject()))
+            {
+                LoadProductsAndCustomers();
+            }
+        }      
 
         public Order CurrentOrder
         {
@@ -39,7 +40,6 @@ namespace Gos.Client
                 OnPropertyChanged();
             }
         }
-
 
         public ObservableCollection<OrderItemModel> Items
         {
@@ -69,6 +69,28 @@ namespace Gos.Client
                 _customers = value;
                 OnPropertyChanged();
             }
+        }
+
+        private void OnAddItem()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void OnSubmitOrder()
+        {
+            throw new NotImplementedException();
+        }
+
+        private async void LoadProductsAndCustomers()
+        {
+            // we use here "automatic" implementation of service here (right click of project add service ref...) 
+            // Actualy we didn`t created Asyncs methods but they where genereted autonatically
+            // we can find GosServiceClient and async methods by the following: Sol.Expl. Show All Files
+            // Open connected services -> under Reference.svcmap-> Reference.cs
+            GosServiceClient proxy = new GosServiceClient("NetTcpBinding_IGosService"); // we are passing name of endpoint to the constructor
+            Products = await proxy.GetProductsAsync();
+            Customers = await proxy.GetCustomerAsync();
+            proxy.Close();
         }
 
     }

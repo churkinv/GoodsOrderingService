@@ -15,7 +15,7 @@ namespace Gos.SelfHost
                 host.Open();
                 Console.WriteLine("Press any key to exit");
                 Console.ReadKey();
-                host.Close(); // it will stop accepting new calls and complet the ones whis is in process
+                host.Close(); // it will stop accepting new calls and complete the ones which is in process
             }
             catch (Exception ex)
             {
