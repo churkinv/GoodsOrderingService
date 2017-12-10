@@ -15,15 +15,15 @@ namespace Gos.Client
         private ObservableCollection<OrderItemModel> _items = new ObservableCollection<OrderItemModel>();
         private Order _currentOrder = new Order();
 
-        //public OrderCommand SubmitOrderCommand { get; private set; }
-        public OrderCommand<object> AddOrderItemCommand  { get; private set; }
+        public SubmitOrderCommand SubmitOrderCommand { get; private set; }
+        public AddItemOrderCommand<object> AddOrderItemCommand  { get; private set; }
 
         public MainViewModel()
         {
             _currentOrder.OrderDate = DateTime.Now;
             _currentOrder.OrderStatusId = 1;
-            //SubmitOrderCommand = new OrderCommand(OnSubmitOrder);
-            AddOrderItemCommand = new OrderCommand<object>(OnAddItem); // we use generic to pass method with parametr also adjusted in OrderCommand
+            SubmitOrderCommand = new SubmitOrderCommand(OnSubmitOrder);
+            AddOrderItemCommand = new AddItemOrderCommand<object>(OnAddItem); // we use generic to pass method with parametr also adjusted in OrderCommand
 
             // TODO: find out more
             if (!DesignerProperties.GetIsInDesignMode(new DependencyObject()))
@@ -34,7 +34,7 @@ namespace Gos.Client
 
         public Order CurrentOrder
         {
-            get { return _currentOrder = new Order(); }
+            get { return _currentOrder; }
             set
             {
                 _currentOrder = value;
@@ -73,18 +73,23 @@ namespace Gos.Client
         }
 
         private async void LoadProductsAndCustomers()
-        {
-          
+        {          
             // We use "automatic" implementation of service here (right click of project add service ref...) 
-            // Actualy we didn`t created Asyncs methods but they where genereted autonatically
+            // Actualy we didn`t created Asyncs methods but they where genereted automatically
             // we can find GosServiceClient and async methods by the following: Sol.Expl. Show All Files
             // Open connected services -> under Reference.svcmap-> Reference.cs
             GosServiceClient proxy = new GosServiceClient("NetTcpBinding_IGosService"); // we are passing name of endpoint from App.config to the constructor
-                                                                                        //GosProxy proxy = new GosProxy("NetTcpBinding_IGosService"); // this one to use handcoded proxy class just for example
+            //GosProxy proxy = new GosProxy("NetTcpBinding_IGosService"); // this one to use handcoded proxy class just for example
             #region security option 4
             //proxy.ClientCredentials.Windows.ClientCredential.UserName = "login to windows";
             //proxy.ClientCredentials.Windows.ClientCredential.Password = "your password";
             #endregion
+
+            #region security tip
+            // with NTLM (workgroup config) we have to duplicate the username and pasworrd that`s configured on the client machine, 
+            //on the server machine as well. In a domain config, all that`s handled bt ActiveDirectory
+            #endregion
+
             try
             {
                 Products = await proxy.GetProductsAsync();
@@ -107,9 +112,10 @@ namespace Gos.Client
                 GosServiceClient proxy = new GosServiceClient("NetTcpBinding_IGosService");
                 //GosProxy proxy = new GosProxy("NetTcpBinding_IGosService"); // this one to use handcoded proxy class just for example
                 try
-                {
+                {                
                     proxy.SubmitOrder(_currentOrder);
-                    CurrentOrder = new Order();
+                    MessageBox.Show("Order successfully saved");
+                    CurrentOrder = new Order(); // reinitialize to empty order
                     CurrentOrder.OrderDate = DateTime.Now;
                     CurrentOrder.OrderStatusId = 1;
                     Items = new ObservableCollection<OrderItemModel>();
@@ -122,6 +128,10 @@ namespace Gos.Client
                 {
                     proxy.Close();
                 }
+            }
+            else
+            {
+                MessageBox.Show("Please select customer and add order items to submit an order");
             }
         }
 

@@ -39,6 +39,15 @@
                         CommandParameter="{Binding .}"/>
             </Grid>
         </DataTemplate>
+        <!--is not used-->
+        <DataTemplate x:Key="OrderItemTemplate">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontWeight="Bold"
+                           Text="{Binding ProductName}" />
+                <TextBlock Text="{Binding Quantity}" />
+                <TextBlock Text="{Binding Path=TotalPrice, StringFormat=c}" />
+            </StackPanel>
+        </DataTemplate>
     </Window.Resources>
 
     <Grid>
@@ -50,7 +59,7 @@
             <RowDefinition Height="31*"/>
             <RowDefinition Height="254*"/>
         </Grid.RowDefinitions>
-        
+
         <DataGrid HorizontalAlignment="Left"
                   Height="494" Margin="10,0.6,0,0"
                   VerticalAlignment="Top"
@@ -62,27 +71,27 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding ProductName}" />
                 <DataGridTextColumn Binding="{Binding Quantity}" />
-                <DataGridTextColumn Binding="{Binding TotalPrice}" />
+                <DataGridTextColumn Binding="{Binding TotalPrice, StringFormat=c}" />
             </DataGrid.Columns>
         </DataGrid>
 
         <!--to use scroll in items control we have to point Row and Column in ScrollViewer-->
         <ScrollViewer Grid.Column="1" Grid.Row="1" Margin="0,0,0,0" >
-        <ItemsControl  Grid.Column="1" Grid.Row="1"                    
+            <ItemsControl  Grid.Column="1" Grid.Row="1"                    
                        HorizontalAlignment="Left"              
                        Margin="0" 
                        VerticalAlignment="Top" 
                        Width="513.233" 
                        ItemsSource="{Binding Products}"
                        ItemTemplate="{StaticResource MyDataTemplate}">
-            <!--<ItemsControl.Template>
+                <!--<ItemsControl.Template>
                     <ControlTemplate>
                     <ScrollViewer x:Name="ScrollViewer" Padding="{TemplateBinding Padding}">
                             <ItemsPresenter />
                         </ScrollViewer>
                     </ControlTemplate>
                 </ItemsControl.Template>-->
-        </ItemsControl>
+            </ItemsControl>
         </ScrollViewer>
 
         <Label Content="Customer:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="26" Width="64"/>
@@ -92,6 +101,7 @@
                   VerticalAlignment="Top" 
                   Width="230"
                   SelectedValue="{Binding CurrentOrder.CustomerId}"
+                  SelectedValuePath="Id"
                   ItemsSource="{Binding Customers}" 
                   DisplayMemberPath="FirstName" Height="22"/>
 
@@ -102,7 +112,7 @@
                 VerticalAlignment="Top"
                 Width="143"
                 Height="48"
+                Command="{Binding SubmitOrderCommand}"
                 Style="{DynamicResource Gos.Button}"/>
-
     </Grid>
 </Window>

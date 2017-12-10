@@ -22,7 +22,7 @@ namespace Gos.Entities
         public int OrderStatusId { get; set; }
 
         [DataMember]
-        public DateTime OrderDate { get; set; }
+        public DateTime? OrderDate { get; set; }
 
         [DataMember]
         public decimal ItemsTotal { get; set; }

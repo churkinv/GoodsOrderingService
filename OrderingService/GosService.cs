@@ -8,6 +8,7 @@ using System.Threading;
 using System.Security;
 using System.Security.Permissions;
 using System.Security.Claims;
+using System.Windows;
 
 namespace Gos.Services
 {
@@ -22,7 +23,7 @@ namespace Gos.Services
         public List<Product> GetProducts()
         {
             #region security option 1
-            var principal = Thread.CurrentPrincipal; // to check security, two types of autontification NTLM (work group config), Kerberos (domain)
+            //var principal = Thread.CurrentPrincipal; // to check security, two types of autontification NTLM (work group config), Kerberos (domain)
             //if (!principal.IsInRole("BUILTIN\\Administrators"))
             //    throw new SecurityException("Access denied");
             #endregion
@@ -43,7 +44,7 @@ namespace Gos.Services
         {                                                  // if you leave transaction will be comitted, if method cause exception it will roll back the transaction
             _ctx.Orders.Add(order);
             order.OrderItems.ForEach(oi => _ctx.OrderItems.Add(oi));
-            _ctx.SaveChanges();
+            _ctx.SaveChanges();           
         }
 
         // We should use IDisposable as default behaviour is that service will be kept alive 
