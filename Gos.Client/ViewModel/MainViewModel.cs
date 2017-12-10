@@ -80,15 +80,16 @@ namespace Gos.Client
             // Open connected services -> under Reference.svcmap-> Reference.cs
             GosServiceClient proxy = new GosServiceClient("NetTcpBinding_IGosService"); // we are passing name of endpoint from App.config to the constructor
             //GosProxy proxy = new GosProxy("NetTcpBinding_IGosService"); // this one to use handcoded proxy class just for example
+
             #region security option 4
             //proxy.ClientCredentials.Windows.ClientCredential.UserName = "login to windows/host";
-            //proxy.ClientCredentials.Windows.ClientCredential.Domain = ... in case differen domains
+            //proxy.ClientCredentials.Windows.ClientCredential.Domain = ... in case different domains
             //proxy.ClientCredentials.Windows.ClientCredential.Password = "your password / password of host";
             #endregion
 
             #region security tip
             // with NTLM (workgroup config) we have to duplicate the username and pasworrd that`s configured on the client machine, 
-            //on the server machine as well. In a domain config, all that`s handled bt ActiveDirectory
+            // on the server machine as well. In a domain config, all that`s handled by ActiveDirectory
             #endregion
 
             try
