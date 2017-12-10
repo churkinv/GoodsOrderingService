@@ -4,11 +4,6 @@ using System.Linq;
 using Gos.Entities;
 using Gos.Data;
 using System.ServiceModel;
-using System.Threading;
-using System.Security;
-using System.Security.Permissions;
-using System.Security.Claims;
-using System.Windows;
 
 namespace Gos.Services
 {
@@ -23,11 +18,15 @@ namespace Gos.Services
         public List<Product> GetProducts()
         {
             #region security option 1
+            //string hostIdentity = WindowsIdentity.GetCurrent().Name;
+            //string primaryIdentity = ServiceSecurityContext.Current.PrimaryIdentity.Name; // this identity is placed to threadIdentity, but if we turn of security (mode="None") it will be null
+            //string windowsIdentity = ServiceSecurityContext.Current.WindowsIdentity.Name;
+            //string threadIdentity = Thread.CurrentPrincipal.Identity.Name; // during "constructing" it will be null BUT you can see primaryIdentity
             //var principal = Thread.CurrentPrincipal; // to check security, two types of autontification NTLM (work group config), Kerberos (domain)
             //if (!principal.IsInRole("BUILTIN\\Administrators"))
             //    throw new SecurityException("Access denied");
             #endregion
-            
+
             #region security option 3
             //ClaimsPrincipal.Current.HasClaim(...); // value can be determined dynamically. From .net 4.5 all principals are claim principals
             #endregion

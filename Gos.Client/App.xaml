@@ -7,7 +7,7 @@
 
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="GosButtonTemplate.xaml"/>               
+                <ResourceDictionary Source="View/GosButtonTemplate.xaml"/>               
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 

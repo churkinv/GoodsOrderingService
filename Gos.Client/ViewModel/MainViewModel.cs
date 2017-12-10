@@ -81,8 +81,9 @@ namespace Gos.Client
             GosServiceClient proxy = new GosServiceClient("NetTcpBinding_IGosService"); // we are passing name of endpoint from App.config to the constructor
             //GosProxy proxy = new GosProxy("NetTcpBinding_IGosService"); // this one to use handcoded proxy class just for example
             #region security option 4
-            //proxy.ClientCredentials.Windows.ClientCredential.UserName = "login to windows";
-            //proxy.ClientCredentials.Windows.ClientCredential.Password = "your password";
+            //proxy.ClientCredentials.Windows.ClientCredential.UserName = "login to windows/host";
+            //proxy.ClientCredentials.Windows.ClientCredential.Domain = ... in case differen domains
+            //proxy.ClientCredentials.Windows.ClientCredential.Password = "your password / password of host";
             #endregion
 
             #region security tip

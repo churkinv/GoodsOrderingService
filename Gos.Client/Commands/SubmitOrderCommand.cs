@@ -1,20 +1,15 @@
-﻿using Gos.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Input;
 
 namespace Gos.Client
 {
-    public class AddItemOrderCommand<T> : ICommand
+    public class SubmitOrderCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
-        private readonly Action<object> _execute;
+        private readonly Action _execute;
         private readonly Func<bool> _canExecute;
 
-        public AddItemOrderCommand(Action<object> execute)
+        public SubmitOrderCommand(Action execute)
         {
             _execute = execute;
         }
@@ -26,7 +21,7 @@ namespace Gos.Client
 
         public void Execute(object parameter)
         {
-            _execute(parameter);
+            _execute();
         }
 
         /// <summary>
@@ -42,5 +37,6 @@ namespace Gos.Client
                 handler(this, EventArgs.Empty);
             }
         }
+
     }
 }
